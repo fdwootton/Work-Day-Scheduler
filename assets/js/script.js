@@ -1,17 +1,19 @@
+// --------GLOBAL VARIABLES --------------
 const currentDate = document.getElementById("currentDay");
 const currentHour = moment().hour();
 
+
+
+
+
+
+//------FUNCTION DECLARATIONS------------
 
 function displayDate() {
     const todayDate = moment().format('MMMM DD, YYYY');
     const dayoftheWeek = moment().format('dddd');
     currentDate.textContent = todayDate + " - " + dayoftheWeek;
 };
-
-displayDate();
-// console.log(currentHour);
-
-
 
 function setCurrentTimeBlock () {
     const hour = document.getElementsByClassName("hour");
@@ -25,14 +27,23 @@ function setCurrentTimeBlock () {
     // if moment () < presenttime, its the future, then background color green
 }
 
+
+
+// ---------CALL FUNCTIONS------------
+displayDate();
+
+
+
+
+
 setCurrentTimeBlock();
 
 
 function saveNewContent () {
+    const newContent = 
     // make user input the text content of the time block description box
 }
 
 
 // Add click event for save button, then call saveNewContent ()
-
 
