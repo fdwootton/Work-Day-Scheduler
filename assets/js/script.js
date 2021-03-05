@@ -27,23 +27,30 @@ function setCurrentTimeBlock () {
     // if moment () < presenttime, its the future, then background color green
 }
 
+function saveNewContent () {
+    // const newContent = user input
+    // make user input the text content of the time block description box
+    // save to local storage
+}
+
+
+
 
 
 // ---------CALL FUNCTIONS------------
+
 displayDate();
-
-
-
-
 
 setCurrentTimeBlock();
 
 
-function saveNewContent () {
-    const newContent = 
-    // make user input the text content of the time block description box
-}
 
+
+
+
+
+
+// --------EVENT LISTENERS------------
 
 // Add click event for save button, then call saveNewContent ()
 
