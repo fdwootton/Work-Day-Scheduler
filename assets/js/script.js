@@ -1,6 +1,6 @@
 // --------GLOBAL VARIABLES --------------
 
-const currentHour = moment().hour();
+
 
 
 
@@ -16,17 +16,25 @@ function displayDate() {
     currentDate.text(todayDate + " - " + dayoftheWeek);
 };
 
+
 function updateTimeBlocks () {
-    const hour = document.getElementsByClassName("hour");
-    if (currentHour == 17) {
-        console.log("It's working");
-    };
+    const currentHour = moment().hour();
+    const taskBox = $(".description");
+
+    taskBox.each(function(){
+        const taskBoxHour = parseInt($(this).attr("data-time"));
+
+        if (currentHour === taskBoxHour) {
+            $(this).removeClass("past future").addClass("present");
+        };
+    });
+};
     // if moment() === present, then background color red
     // if the current time is between the timeblock-time + timeblock-time + 59 minutes and 59 seconds, then its green
 
     // if moment () > present, its the past, then background color gray and disable?
     // if moment () < presenttime, its the future, then background color green
-}
+
 
 function saveNewContent () {
     // const newContent = user input
