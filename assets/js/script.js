@@ -27,6 +27,10 @@ function updateTimeBlocks () {
         if (currentHour === taskBoxHour) {
             $(this).removeClass("past future").addClass("present");
         };
+
+        if (currentHour > taskBoxHour) {
+            $(this).removeClass("present future").addClass("past");
+        };
     });
 };
     // if moment() === present, then background color red
