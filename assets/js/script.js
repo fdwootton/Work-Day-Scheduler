@@ -1,5 +1,5 @@
 // --------GLOBAL VARIABLES --------------
-const currentDate = document.getElementById("currentDay");
+
 const currentHour = moment().hour();
 
 
@@ -10,9 +10,10 @@ const currentHour = moment().hour();
 //------FUNCTION DECLARATIONS------------
 
 function displayDate() {
+    const currentDate = $("#currentDay");
     const todayDate = moment().format('MMMM DD, YYYY');
     const dayoftheWeek = moment().format('dddd');
-    currentDate.textContent = todayDate + " - " + dayoftheWeek;
+    currentDate.text(todayDate + " - " + dayoftheWeek);
 };
 
 function setCurrentTimeBlock () {
