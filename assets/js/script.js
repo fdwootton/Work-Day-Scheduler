@@ -53,4 +53,3 @@ setCurrentTimeBlock();
 // --------EVENT LISTENERS------------
 
 // Add click event for save button, then call saveNewContent ()
-
