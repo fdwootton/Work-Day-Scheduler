@@ -16,7 +16,7 @@ function displayDate() {
     currentDate.text(todayDate + " - " + dayoftheWeek);
 };
 
-function setCurrentTimeBlock () {
+function updateTimeBlocks () {
     const hour = document.getElementsByClassName("hour");
     if (currentHour == 17) {
         console.log("It's working");
@@ -42,7 +42,7 @@ function saveNewContent () {
 
 displayDate();
 
-setCurrentTimeBlock();
+updateTimeBlocks();
 
 
 
