@@ -11,6 +11,8 @@ $().ready(function () {
     $("#hour16").val(JSON.parse(localStorage.getItem("16")));
     $("#hour17").val(JSON.parse(localStorage.getItem("17")));
 
+    console.log(localStorage.getItem("9"));
+
 });
 
 
@@ -69,7 +71,7 @@ setInterval(updateTimeBlocks, 1000);
 
 // ---------------------------EVENT LISTENERS----------------------------------
 
-// saves text typed into the textarea when save button clicked
+// saves text typed into the textarea to local storage when save button clicked
 $(".saveBtn").on("click", function (event) {
     event.preventDefault();
     var task = $(this).siblings(".description").val();
@@ -78,6 +80,8 @@ $(".saveBtn").on("click", function (event) {
 });
 
 
+
+// renders a blank work schedule
 $("#clearBtn").on("click", function (event){
 
     event.preventDefault();
@@ -94,5 +98,3 @@ $("#clearBtn").on("click", function (event){
     $("#hour16").val("");
     $("#hour17").val("");
 });
-
-//  Clear text area or clear local storage when day changes?
