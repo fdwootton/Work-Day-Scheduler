@@ -1,15 +1,15 @@
 // Sets saved tasks in corresponding time blocks when page loads/refreshed
 $().ready(function () {
 
-    $("#hour9").val(JSON.parse(localStorage.getItem("9")));
-    $("#hour10").val(JSON.parse(localStorage.getItem("10")));
-    $("#hour11").val(JSON.parse(localStorage.getItem("11")));
-    $("#hour12").val(JSON.parse(localStorage.getItem("12")));
-    $("#hour13").val(JSON.parse(localStorage.getItem("13")));
-    $("#hour14").val(JSON.parse(localStorage.getItem("14")));
-    $("#hour15").val(JSON.parse(localStorage.getItem("15")));
-    $("#hour16").val(JSON.parse(localStorage.getItem("16")));
-    $("#hour17").val(JSON.parse(localStorage.getItem("17")));
+    $("#hour9").val(localStorage.getItem("9"));
+    $("#hour10").val(localStorage.getItem("10"));
+    $("#hour11").val(localStorage.getItem("11"));
+    $("#hour12").val(localStorage.getItem("12"));
+    $("#hour13").val(localStorage.getItem("13"));
+    $("#hour14").val(localStorage.getItem("14"));
+    $("#hour15").val(localStorage.getItem("15"));
+    $("#hour16").val(localStorage.getItem("16"));
+    $("#hour17").val(localStorage.getItem("17"));
 
     console.log(localStorage.getItem("9"));
 
@@ -76,7 +76,8 @@ $(".saveBtn").on("click", function (event) {
     event.preventDefault();
     var task = $(this).siblings(".description").val();
     var hour = $(this).siblings(".description").attr("data-time");
-    localStorage.setItem(JSON.stringify(hour), JSON.stringify(task));
+    console.log(hour);
+    localStorage.setItem(hour, task);
 });
 
 
