@@ -1,5 +1,6 @@
 // Sets saved tasks in corresponding time blocks when page loads/refreshed
 $().ready(function () {
+
     $("#hour9").val(JSON.parse(localStorage.getItem("9")));
     $("#hour10").val(JSON.parse(localStorage.getItem("10")));
     $("#hour11").val(JSON.parse(localStorage.getItem("11")));
@@ -9,6 +10,7 @@ $().ready(function () {
     $("#hour15").val(JSON.parse(localStorage.getItem("15")));
     $("#hour16").val(JSON.parse(localStorage.getItem("16")));
     $("#hour17").val(JSON.parse(localStorage.getItem("17")));
+
 });
 
 
@@ -51,6 +53,7 @@ function updateTimeBlocks () {
 };
 
 
+
 // -----------------------------CALL FUNCTIONS--------------------------------
 
 displayDate();
@@ -67,13 +70,29 @@ setInterval(updateTimeBlocks, 1000);
 // ---------------------------EVENT LISTENERS----------------------------------
 
 // saves text typed into the textarea when save button clicked
- $(".saveBtn").on("click", function (event) {
+$(".saveBtn").on("click", function (event) {
     event.preventDefault();
     var task = $(this).siblings(".description").val();
     var hour = $(this).siblings(".description").attr("data-time");
     localStorage.setItem(JSON.stringify(hour), JSON.stringify(task));
- });
+});
 
 
+$("#clearBtn").on("click", function (event){
+
+    event.preventDefault();
+
+    localStorage.clear();
+
+    $("#hour9").val("");
+    $("#hour10").val("");
+    $("#hour11").val("");
+    $("#hour12").val("");
+    $("#hour13").val("");
+    $("#hour14").val("");
+    $("#hour15").val("");
+    $("#hour16").val("");
+    $("#hour17").val("");
+});
 
 //  Clear text area or clear local storage when day changes?
