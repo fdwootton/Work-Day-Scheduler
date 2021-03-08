@@ -1,5 +1,22 @@
-//------FUNCTION DECLARATIONS------------
+// Sets saved tasks in corresponding time blocks when page loads/refreshed
+$().ready(function () {
+    $("#hour9").val(JSON.parse(localStorage.getItem("9")));
+    $("#hour10").val(localStorage.getItem("10"));
+    $("#hour11").val(localStorage.getItem("11"));
+    $("#hour12").val(localStorage.getItem("12"));
+    $("#hour13").val(localStorage.getItem("13"));
+    $("#hour14").val(localStorage.getItem("14"));
+    $("#hour15").val(localStorage.getItem("15"));
+    $("#hour16").val(localStorage.getItem("16"));
+    $("#hour17").val(localStorage.getItem("17"));
+});
 
+
+
+//--------------------------FUNCTIONS------------------------------------
+
+
+// displays the current date and day of the week in the header
 function displayDate() {
     const currentDate = $("#currentDay");
     const todayDate = moment().format('MMMM DD, YYYY');
@@ -8,6 +25,9 @@ function displayDate() {
 };
 
 
+
+
+// color codes each time block based on past, present, or future
 function updateTimeBlocks () {
 
     const currentHour = moment().hour();
@@ -31,76 +51,29 @@ function updateTimeBlocks () {
 };
 
 
-// function updateTasks () {
-//     
-// }
-
-
-function saveNewTask () {
-    
-    $(".saveBtn").each(function () {
-
-        var task = $(this).siblings(".description").val();
-        var time = $(this).siblings(".description").attr("data-time");
-
-        localStorage.setItem(time, task);
-
-        setTasks();
-
-    })
-};
-
-
-function setTasks () {
-    $("#hour9 .description").val(localStorage.getItem("8"));
-    $("#hour10 .description").val(localStorage.getItem("9"));
-    $("#hour11 .description").val(localStorage.getItem("10"));
-    $("#hour12 .description").val(localStorage.getItem("11"));
-    $("#hour13 .description").val(localStorage.getItem("12"));
-    $("#hour14 .description").val(localStorage.getItem("13"));
-    $("#hour15 .description").val(localStorage.getItem("14"));
-    $("#hour16 .description").val(localStorage.getItem("15"));
-    $("#hour17 .description").val(localStorage.getItem("16"));
-};
-
-
-
-// CLEAR LOCAL STORAGE FOR A NEW DAY
-
-    // const newContent = user input
-    // make user input the text content of the time block description box
-    // save to local storage
-
-
-
-// for EACH timeblock, event delegation to save button
-// this save button for this time block
-
-// $(".saveBtn").on("click", function () {
-//     // Get nearby values of the description in JQuery
-//     var text = $(this).siblings(".description").val();
-//     var time = $(this).parent().attr("id");
-
-//     // Save text in local storage
-//     localStorage.setItem(t text);
-// })
-
-
-// ---------CALL FUNCTIONS------------
+// -----------------------------CALL FUNCTIONS--------------------------------
 
 displayDate();
 
 updateTimeBlocks();
 
+
+// Calls the updateTimeBlock function every second, so that time block colors are updated according to current time,
+// even if page hasn't been refreshed
 setInterval(updateTimeBlocks, 1000);
 
-$(".saveBtn").click(saveNewTask);
+
+
+// ---------------------------EVENT LISTENERS----------------------------------
+
+// saves text typed into the textarea when save button clicked
+ $(".saveBtn").on("click", function (event) {
+    event.preventDefault();
+    var task = $(this).siblings(".description").val();
+    var hour = $(this).siblings(".description").attr("data-time");
+    localStorage.setItem(JSON.stringify(hour), JSON.stringify(task));
+ });
 
 
 
-
-// --------EVENT LISTENERS------------
-
-$(".saveBtn").on("click", saveNewTask);
-
-// Add click event for save button, then call saveNewContent ()
+//  Clear text area or clear local storage when day changes?
